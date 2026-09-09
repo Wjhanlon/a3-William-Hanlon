@@ -7,45 +7,110 @@ const http = require( 'http' ),
       dir  = 'public/',
       port = 3000
 
-const appdata = [
-  { 'model': 'toyota', 'year': 1999, 'mpg': 23 },
-  { 'model': 'honda', 'year': 2004, 'mpg': 30 },
-  { 'model': 'ford', 'year': 1987, 'mpg': 14} 
-]
+let appdata = []
+let nextId = 1
 
-const server = http.createServer( function( request,response ) {
+function computePriority( item ) {
+  if( item.urgent ) {
+    return 'High'
+  }
+
+  let today = new Date()
+  let due = new Date( item.date )
+  let diffDays = ( due - today ) / ( 1000 * 60 * 60 * 24 )
+
+  if( diffDays <= 3 ) return 'High'
+  if( diffDays <= 7 ) return 'Medium'
+  return 'Low'
+}
+
+const server = http.createServer( function( request, response ) {
   if( request.method === 'GET' ) {
-    handleGet( request, response )    
-  }else if( request.method === 'POST' ){
-    handlePost( request, response ) 
+    handleGet( request, response )
+  }else if( request.method === 'POST' ) {
+    handlePost( request, response )
+  }else if( request.method === 'PUT' ) {
+    handlePut( request, response )
+  }else if( request.method === 'DELETE' ) {
+    handleDelete( request, response )
   }
 })
 
 const handleGet = function( request, response ) {
-  const filename = dir + request.url.slice( 1 ) 
-
-  if( request.url === '/' ) {
-    sendFile( response, 'public/index.html' )
-  }else{
-    sendFile( response, filename )
+  if( request.url === '/data' ) {
+    response.writeHead( 200, { 'Content-Type': 'application/json' })
+    response.end( JSON.stringify( appdata ) )
+    return
   }
+
+  const filename = request.url === '/' ? 'public/index.html' : dir + request.url.slice( 1 )
+  sendFile( response, filename )
 }
 
 const handlePost = function( request, response ) {
   let dataString = ''
 
   request.on( 'data', function( data ) {
-      dataString += data 
+    dataString += data
   })
 
   request.on( 'end', function() {
-    console.log( JSON.parse( dataString ) )
-    // ... do something with the data here!!!
+    const item = JSON.parse( dataString )
 
-    response.writeHead( 200, "OK", {'Content-Type': 'text/plain' })
+    item.id = nextId
+    nextId = nextId + 1
+    item.priority = computePriority( item )   // derived field
 
-    // change this to incorporate data
-    response.end('test')
+    appdata.push( item )
+
+    response.writeHead( 200, { 'Content-Type': 'application/json' })
+    response.end( JSON.stringify( appdata ) )
+  })
+}
+
+const handlePut = function( request, response ) {
+  let dataString = ''
+
+  request.on( 'data', function( data ) {
+    dataString += data
+  })
+
+  request.on( 'end', function() {
+    const updated = JSON.parse( dataString )
+
+    for( let i = 0; i < appdata.length; i++ ) {
+      if( appdata[ i ].id === updated.id ) {
+        updated.priority = computePriority( updated )   // recompute derived field
+        appdata[ i ] = updated
+      }
+    }
+
+    response.writeHead( 200, { 'Content-Type': 'application/json' })
+    response.end( JSON.stringify( appdata ) )
+  })
+}
+
+const handleDelete = function( request, response ) {
+  let dataString = ''
+
+  request.on( 'data', function( data ) {
+    dataString += data
+  })
+
+  request.on( 'end', function() {
+    const idToDelete = JSON.parse( dataString ).id
+    const newData = []
+
+    for( let i = 0; i < appdata.length; i++ ) {
+      if( appdata[ i ].id !== idToDelete ) {
+        newData.push( appdata[ i ] )
+      }
+    }
+
+    appdata = newData
+
+    response.writeHead( 200, { 'Content-Type': 'application/json' })
+    response.end( JSON.stringify( appdata ) )
   })
 }
 
