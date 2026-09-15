@@ -64,8 +64,8 @@ app.post("/data", requiresAuth(), async (request, response) => {
 
 app.put("/data", requiresAuth(), async (request, response) => {
   const updated = request.body;
-  const id = updated.id;
-  delete updated.id;
+  const id = updated._id;
+  delete updated._id;
 
   updated.owner = request.oidc.user.sub;
   updated.priority = computePriority(updated);

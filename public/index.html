@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="Equipment Request Form" />
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="css/main.css" />
+    <link href="./css/tailwind.css" rel="tailwind" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,6 +17,10 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   </head>
   <body>
+    <div class="header-bar">
+      <span class="header-title">Equipment Request Form</span>
+      <a href="/logout" class="header-logout">Log Out</a>
+    </div>
     <div class="form">
       <h1>Equipment Request Form</h1>
       <form id="requestForm" method="POST" action="/data">

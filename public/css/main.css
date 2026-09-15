@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 * {
   box-sizing: border-box;
 }
@@ -29,10 +31,10 @@ body {
   flex: 1;
 }
 
-input:not([type='checkbox']),
+input:not([type="checkbox"]),
 textarea,
-input[type='submit'],
-input[type='reset'] {
+input[type="submit"],
+input[type="reset"] {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 0.75rem;
@@ -45,26 +47,26 @@ label {
   margin-top: 0.75rem;
 }
 
-label[for='urgent'] {
+label[for="urgent"] {
   display: inline-flex;
   margin-top: 0.75rem;
 }
 
-input[type='submit'] {
+input[type="submit"] {
   background: #2e6fa3;
   color: white;
   border: none;
 }
-input[type='submit']:hover {
+input[type="submit"]:hover {
   opacity: 0.9;
 }
 
-input[type='reset']:hover {
+input[type="reset"]:hover {
   background: #2e6fa3;
   color: white;
 }
 
-input[type='button']:hover {
+input[type="button"]:hover {
   background: #2e6fa3;
   color: white;
 }
@@ -73,7 +75,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 0.5rem;
   border-bottom: 0.0625rem solid #dce7f2;
@@ -95,4 +98,45 @@ th {
 #results-table button:hover {
   background: #2e6fa3;
   color: white;
+}
+
+.header-bar {
+  position: fixed;
+  top: 1rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: #ffffff;
+  border: 0.0625rem solid #dce7f2;
+  border-radius: 0.875rem;
+  z-index: 100;
+}
+
+.header-title {
+  font-weight: 600;
+}
+
+.header-logout {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 0.0625rem solid #dce7f2;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #1e2a36;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.header-logout:hover {
+  background: #2e6fa3;
+  color: white;
+}
+
+body {
+  padding-top: 5rem;
 }
