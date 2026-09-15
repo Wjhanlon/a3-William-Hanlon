@@ -14,28 +14,28 @@ function renderTable(data) {
     const row = document.createElement("tr");
 
     row.innerHTML =
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.equipment +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.name +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.quantity +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       (item.urgent ? "Yes" : "No") +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.date +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.notes +
       "</td>" +
-      "<td>" +
+      '<td class="text-left p-2 border-b border-[#dce7f2]">' +
       item.priority +
       "</td>" +
-      '<td><button type="button" class="w-full p-2 mb-3 border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Edit</button> <button type="button" class="w-full p-2 mb-3 border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Delete</button></td>';
+      '<td class="text-left p-2 border-b border-[#dce7f2]"><button type="button" class="px-2 py-0.5 text-sm border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Edit</button> <button type="button" class="px-2 py-0.5 text-sm border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Delete</button></td>';
 
     const buttons = row.querySelectorAll("button");
     buttons[0].onclick = function () {
