@@ -4,7 +4,9 @@
   "description": "",
   "author": "",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:css": "npx @tailwindcss/cli -i public/css/main.css -o public/css/tailwind.css",
+    "watch:css": "npx @tailwindcss/cli -i public/css/main.css -o public/css/tailwind.css --watch"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",

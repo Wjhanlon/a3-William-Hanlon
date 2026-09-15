@@ -35,7 +35,7 @@ function renderTable(data) {
       "<td>" +
       item.priority +
       "</td>" +
-      '<td><button type="button">Edit</button> <button type="button">Delete</button></td>';
+      '<td><button type="button" class="w-full p-2 mb-3 border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Edit</button> <button type="button" class="w-full p-2 mb-3 border border-[#dce7f2] rounded-lg cursor-pointer hover:bg-[#2e6fa3] hover:text-white">Delete</button></td>';
 
     const buttons = row.querySelectorAll("button");
     buttons[0].onclick = function () {
