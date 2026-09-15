@@ -1,8 +1,8 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "a3-william-hanlon",
+  "version": "1.0.0",
+  "description": "A webapp for requesting equipment",
+  "author": "William Hanlon",
   "scripts": {
     "start": "node server.js",
     "build:css": "npx @tailwindcss/cli -i public/css/main.css -o public/css/tailwind.css",
