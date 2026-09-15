@@ -27,7 +27,7 @@ The goal of this application is for a user to be able to request a piece of equi
 
 
 ## Technical Achievements
-- **Tech Achievement 1**: I used OAuth authentication via Auth0 to add authentication to my project. One thing to note is that because an Auth0 account can only create one tenant per free account, this project is in the same workspace as another project of mine. This will not mean anything for signing in through google or Github, however if you were able to access the global sign up page for the workspace, it would say something like "sign up to Movie Compass to continue to Webware A3." I am not quite sure how you would be able to do this, but it may be possible rarely.
+- **Tech Achievement 1**: I used OAuth authentication via Auth0 to add authentication to my project. One thing to note is that because an Auth0 account can only create one tenant per free account, this project is in the same workspace as another project of mine. This will not mean anything for signing in through google or Github, however if you were able to access the global sign up page for the workspace, it would say something like "sign up to Movie Compass to continue to Webware A3." I am not quite sure how you would be able to do this, but it may be possible rarely. The red triangle at the top is saying that there is a project in the workspace using dev keys, not production; This is the other project in the tenant.
 - **Tech Achievement 2**: I achieved 100% in all four lighthouse tests consistently. 
 <img width="2559" height="1270" alt="image" src="https://github.com/user-attachments/assets/49cb061b-4bdc-41d9-9c72-b1b3a3df9e81" />
 
